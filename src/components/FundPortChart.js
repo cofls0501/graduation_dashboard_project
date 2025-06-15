@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
-} from 'recharts';
+import { PieChart, Pie, Tooltip, Cell, Legend, ResponsiveContainer } from 'recharts';
 import Papa from 'papaparse';
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export default function FundPortChart() {
   const [data, setData] = useState([]);
@@ -14,30 +14,26 @@ export default function FundPortChart() {
         Papa.parse(csv, {
           header: true,
           dynamicTyping: true,
-          skipEmptyLines: true,
-          complete: (result) => {
-            setData(result.data);
-          },
+          complete: result => {
+            const latestYear = Math.max(...result.data.map(d => d.year));
+            const latestData = result.data.filter(d => d.year === latestYear);
+            setData(latestData);
+          }
         });
       });
   }, []);
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <AreaChart
-        data={data}
-        stackOffset="expand"
-        margin={{ top: 30, right: 30, left: 0, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="year" />
-        <YAxis />
+      <PieChart>
+        <Pie data={data} dataKey="ratio" nameKey="category" cx="50%" cy="50%" outerRadius={150} label>
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
         <Tooltip />
         <Legend />
-        <Area type="monotone" dataKey="welfare" stackId="1" stroke="#8884d8" fill="#8884d8" name="복지부문" />
-        <Area type="monotone" dataKey="finance" stackId="1" stroke="#82ca9d" fill="#82ca9d" name="금융부문" />
-        <Area type="monotone" dataKey="others" stackId="1" stroke="#ffc658" fill="#ffc658" name="기타부문" />
-      </AreaChart>
+      </PieChart>
     </ResponsiveContainer>
   );
 }

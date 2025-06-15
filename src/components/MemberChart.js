@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Papa from 'papaparse';
@@ -13,16 +12,14 @@ export default function MemberChart() {
         Papa.parse(csv, {
           header: true,
           dynamicTyping: true,
-          complete: (result) => {
-            setData(result.data);
-          },
+          complete: result => setData(result.data)
         });
       });
   }, []);
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <LineChart data={data} margin={{ top: 30, right: 30, left: 0, bottom: 5 }}>
+      <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" />
         <YAxis />
