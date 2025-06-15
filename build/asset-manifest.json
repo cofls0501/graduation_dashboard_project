@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/graduation_dashboard_project/static/js/main.f5c591d4.js",
+    "main.css": "/graduation_dashboard_project/static/css/main.7e1ce087.css",
+    "main.js": "/graduation_dashboard_project/static/js/main.0bc422af.js",
     "index.html": "/graduation_dashboard_project/index.html",
-    "main.f5c591d4.js.map": "/graduation_dashboard_project/static/js/main.f5c591d4.js.map"
+    "main.7e1ce087.css.map": "/graduation_dashboard_project/static/css/main.7e1ce087.css.map",
+    "main.0bc422af.js.map": "/graduation_dashboard_project/static/js/main.0bc422af.js.map"
   },
   "entrypoints": [
-    "static/js/main.f5c591d4.js"
+    "static/css/main.7e1ce087.css",
+    "static/js/main.0bc422af.js"
   ]
 }
