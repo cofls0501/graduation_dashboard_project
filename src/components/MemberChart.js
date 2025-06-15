@@ -31,3 +31,4 @@ export default function MemberChart() {
     </ResponsiveContainer>
   );
 }
+<ResponsiveContainer width="100%" height={300}></ResponsiveContainer>

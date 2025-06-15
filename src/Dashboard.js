@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabs } from 'antd';
 import MemberChart from './components/MemberChart';
 import FundChart from './components/FundChart';
@@ -10,10 +9,19 @@ import FundPortChart from './components/FundPortChart';
 const { TabPane } = Tabs;
 
 export default function Dashboard() {
+  const [activeKey, setActiveKey] = useState('1');
+
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>연금 예측 대시보드</h1>
-      <Tabs defaultActiveKey="1" centered size="large">
+    <div style={{ padding: '1rem' }}>
+      <h1 style={{ textAlign: 'center', fontSize: '1.5rem' }}>연금 예측 대시보드</h1>
+      <Tabs
+        activeKey={activeKey}
+        onChange={(key) => setActiveKey(key)}
+        centered
+        size="large"
+        tabPosition="top"
+        style={{ overflowX: 'auto' }}
+      >
         <TabPane tab="가입자/수급자 추이" key="1">
           <MemberChart />
         </TabPane>

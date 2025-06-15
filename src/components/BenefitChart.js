@@ -29,3 +29,4 @@ export default function BenefitChart() {
     </ResponsiveContainer>
   );
 }
+<ResponsiveContainer width="100%" height={300}></ResponsiveContainer>
