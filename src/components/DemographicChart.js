@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Papa from 'papaparse';
 
 export default function DemographicChart() {
@@ -19,16 +19,15 @@ export default function DemographicChart() {
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <LineChart data={data}>
+      <AreaChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" />
         <YAxis />
         <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="age_65_over" stroke="#ff7300" name="65세 이상 인구" />
-        <Line type="monotone" dataKey="age_15_64" stroke="#387908" name="15-64세 인구" />
-      </LineChart>
+        <Area type="monotone" dataKey="pop_0_14" stackId="1" stroke="#8884d8" fill="#8884d8" name="0~14세" />
+        <Area type="monotone" dataKey="pop_15_64" stackId="1" stroke="#82ca9d" fill="#82ca9d" name="15~64세" />
+        <Area type="monotone" dataKey="pop_65_plus" stackId="1" stroke="#ffc658" fill="#ffc658" name="65세 이상" />
+      </AreaChart>
     </ResponsiveContainer>
   );
 }
-<ResponsiveContainer width="100%" height={300}></ResponsiveContainer>

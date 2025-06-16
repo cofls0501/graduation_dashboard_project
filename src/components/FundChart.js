@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Papa from 'papaparse';
 
 export default function FundChart() {
@@ -24,11 +24,9 @@ export default function FundChart() {
         <XAxis dataKey="year" />
         <YAxis />
         <Tooltip />
-        <Legend />
-        <Bar dataKey="income" fill="#8884d8" name="기금 수입" />
-        <Bar dataKey="expenditure" fill="#82ca9d" name="기금 지출" />
+        <Bar dataKey="income" fill="#82ca9d" name="기금 수입" />
+        <Bar dataKey="expense" fill="#ff7f50" name="기금 지출" />
       </BarChart>
     </ResponsiveContainer>
   );
 }
-<ResponsiveContainer width="100%" height={300}></ResponsiveContainer>

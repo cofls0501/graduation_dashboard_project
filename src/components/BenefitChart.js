@@ -24,9 +24,10 @@ export default function BenefitChart() {
         <XAxis dataKey="year" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="total_benefit" stroke="#8884d8" fill="#8884d8" name="총 급여 예측" />
+        <Area type="monotone" dataKey="old_age" stackId="1" stroke="#8884d8" fill="#8884d8" name="노령연금" />
+        <Area type="monotone" dataKey="disability" stackId="1" stroke="#82ca9d" fill="#82ca9d" name="장애연금" />
+        <Area type="monotone" dataKey="bereavement" stackId="1" stroke="#ffc658" fill="#ffc658" name="유족연금" />
       </AreaChart>
     </ResponsiveContainer>
   );
 }
-<ResponsiveContainer width="100%" height={300}></ResponsiveContainer>
